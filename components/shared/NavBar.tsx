@@ -87,46 +87,58 @@
 //   );
 // }
 
-import Image from "next/image";
+// Version 2
+// import Image from "next/image";
 
+// import { getSiteSettings } from "@/services/siteSetting";
+
+// export default async function NavBar() {
+//   const settings = await getSiteSettings();
+
+//   return (
+//     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur">
+//       <div className="mx-auto flex max-w-[1380px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+//         {/* Logo */}
+
+//         <Image
+//           src={settings.logo.url}
+//           alt={settings.siteName}
+//           width={170}
+//           height={60}
+//           className="h-12 w-auto object-contain"
+//           priority
+//         />
+
+//         {/* Desktop Menu */}
+
+//         <ul className="hidden items-center gap-8 text-[#777777] lg:flex">
+//           {["Home", "Courses", "Deals", "Success", "About"].map((item) => (
+//             <li
+//               key={item}
+//               className="cursor-pointer transition hover:text-[#289BDE]"
+//             >
+//               {item}
+//             </li>
+//           ))}
+//         </ul>
+
+//         {/* Desktop Button */}
+
+//         <button className="hidden rounded border border-[#289BDE] px-6 py-2 font-semibold text-[#289BDE] transition hover:bg-[#289BDE] hover:text-white lg:block">
+//           Register
+//         </button>
+//       </div>
+//     </nav>
+//   );
+// }
+
+// Version 3
+// Server Component
 import { getSiteSettings } from "@/services/siteSetting";
+import NavBarClient from "./NavBarClient";
 
 export default async function NavBar() {
   const settings = await getSiteSettings();
 
-  return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-[1380px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        {/* Logo */}
-
-        <Image
-          src={settings.logo.url}
-          alt={settings.siteName}
-          width={170}
-          height={60}
-          className="h-12 w-auto object-contain"
-          priority
-        />
-
-        {/* Desktop Menu */}
-
-        <ul className="hidden items-center gap-8 text-[#777777] lg:flex">
-          {["Home", "Courses", "Deals", "Success", "About"].map((item) => (
-            <li
-              key={item}
-              className="cursor-pointer transition hover:text-[#289BDE]"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop Button */}
-
-        <button className="hidden rounded border border-[#289BDE] px-6 py-2 font-semibold text-[#289BDE] transition hover:bg-[#289BDE] hover:text-white lg:block">
-          Register
-        </button>
-      </div>
-    </nav>
-  );
+  return <NavBarClient settings={settings} />;
 }
