@@ -9,7 +9,7 @@ import Companies from "@/components/Companies";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white font-sans text-gray-800">
+    <div className="font-['Poppins'] min-h-screen overflow-x-hidden bg-white text-gray-800">
       <Hero />
       <Courses />
       <About />
